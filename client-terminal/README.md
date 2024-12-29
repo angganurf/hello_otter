@@ -7,6 +7,7 @@ A powerful, modern terminal interface for interacting with AI agents across the 
 ## Features
 
 ### Core Features
+
 - Modern, responsive terminal interface with Tailwind CSS
 - Multi-provider AI support with seamless switching
 - Local model integration via Ollama
@@ -15,28 +16,27 @@ A powerful, modern terminal interface for interacting with AI agents across the 
 - Customizable themes and styling
 
 ### AI Integration
+
 Multiple provider support with optimized configurations:
+
 - **Galadriel**
   - Models: llama3.1:13b (Normal), llama3.1:70b (Large)
   - Features: Optimized inference, low latency
-  
 - **OpenAI**
   - Models: gpt-4-turbo-preview (Normal), gpt-4-vision-preview (Large)
   - Features: Advanced reasoning, vision capabilities
-  
 - **Anthropic**
   - Models: claude-3-sonnet (Normal), claude-3-opus (Large)
   - Features: Nuanced responses, long context
-  
 - **Heuristic**
   - Models: mixtral-8x7b (Normal), mixtral-8x7b-instruct (Large)
   - Features: Efficient processing, domain expertise
-  
 - **Ollama**
   - Models: hermes3:3b (Normal), hermes3:7b (Large)
   - Features: Local deployment, privacy focused
 
 ### Terminal Features
+
 - Command history with up/down navigation
 - Tab completion for commands
 - Real-time response streaming
@@ -48,24 +48,28 @@ Multiple provider support with optimized configurations:
 ## Installation
 
 ### Prerequisites
+
 - Node.js 18 or higher
 - pnpm (recommended) or npm
 
 ### Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/SYMBaiEX/client-terminal
 cd client-terminal
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Configure environment:
-Create a `.env` file:
+   Create a `.env` file:
+
 ```env
 # Default Provider
 VITE_AI_PROVIDER=ollama  # galadriel, openai, anthropic, heuristic, ollama
@@ -93,6 +97,7 @@ VITE_RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
 ```
 
 4. Start development server:
+
 ```bash
 pnpm run dev
 ```
@@ -121,6 +126,7 @@ list
 ### Chat Features
 
 1. Direct Messaging
+
 ```bash
 # Chat with default agent
 Hello, how are you?
@@ -131,54 +137,60 @@ Hello, how are you?
 ```
 
 2. Command History
+
 - Use Up/Down arrows to navigate history
 - History persists across sessions
 
 3. Auto-completion
+
 - Tab to complete commands
 - Double-tab to show available options
 
 ### Advanced Features
 
 1. System Commands
+
 ```bash
 # Detailed system status
-symx status -v
+otter status -v
 
 # Network scan
-symx scan network
+otter scan network
 
 # View logs
-symx logs
+otter logs
 ```
 
 2. Profile Management
+
 ```bash
 # List all profiles
-symx list
+otter list
 
 # View specific profile
-symx view nyx
+otter view nyx
 
 # Set active chat agent
-symx chat umbra
+otter chat umbra
 ```
 
 3. API Integration
+
 ```bash
 # Generate API key
-symx api generate
+otter api generate
 
 # View API status
-symx api info
+otter api info
 
 # Renew API key
-symx api renew
+otter api renew
 ```
 
 ## Development
 
 ### Project Structure
+
 ```
 client-terminal/
 ├── src/
@@ -194,38 +206,43 @@ client-terminal/
 ### Key Components
 
 1. Terminal Component
+
 ```typescript
-import { Terminal } from '@symbaiex/terminal';
+import { Terminal } from "@symbaiex/terminal";
 
 <Terminal
-  theme="dark"
-  history={100}
-  maxOutput={1000}
-  onCommand={handleCommand}
-/>
+	theme="dark"
+	history={100}
+	maxOutput={1000}
+	onCommand={handleCommand}
+/>;
 ```
 
 2. AI Provider Integration
-```typescript
-import { getProvider } from '@symbaiex/terminal';
 
-const provider = await getProvider('galadriel');
+```typescript
+import { getProvider } from "@symbaiex/terminal";
+
+const provider = await getProvider("galadriel");
 const response = await provider.chat(message, options);
 ```
 
 ### Building
 
 1. Development build:
+
 ```bash
 pnpm run dev
 ```
 
 2. Production build:
+
 ```bash
 pnpm run build
 ```
 
 3. Preview production:
+
 ```bash
 pnpm run preview
 ```
@@ -233,12 +250,15 @@ pnpm run preview
 ## Security
 
 ### Best Practices
+
 1. API Key Management
+
    - Store keys in environment variables
    - Rotate keys regularly
    - Never commit keys to version control
 
 2. Rate Limiting
+
    - Configure appropriate limits
    - Monitor usage patterns
    - Implement backoff strategies
@@ -257,6 +277,7 @@ pnpm run preview
 5. Create a Pull Request
 
 ### Development Guidelines
+
 - Follow TypeScript best practices
 - Maintain test coverage
 - Document new features

@@ -1,17 +1,19 @@
 # Eliza Plugin
 
-Connect your Eliza-based AI agents with the SYMBaiEX network.
+Connect your Eliza-based AI agents with the otter network.
 
 ## Features
 
 ### Core Features
-- Direct SYMBaiEX network integration
+
+- Direct otter network integration
 - Real-time agent communication
 - Secure API access
 - Event-driven messaging
 - Automatic agent identity management
 
 ### Advanced Features
+
 - Unique agent identity generation
 - Rate limiting and throttling
 - Error handling and retries
@@ -21,57 +23,59 @@ Connect your Eliza-based AI agents with the SYMBaiEX network.
 ## Installation
 
 ```bash
-npm install eliza-plugin-symbaiex
+npm install eliza-plugin-otter
 ```
 
 ## Configuration
 
 1. Environment Setup:
+
 ```env
 # API Configuration
-SYMBAIEX_API_KEY=your-key
-SYMBAIEX_API_URL=https://api.symbaiex.com/v1
-SYMBAIEX_WS_URL=wss://api.symbaiex.com/v1/ws
+OTTER_API_KEY=your-key
+OTTER_API_URL=https://api.otter.com/v1
+OTTER_WS_URL=wss://api.otter.com/v1/ws
 
 # Plugin Settings
-SYMBAIEX_MAX_RETRIES=3
-SYMBAIEX_TIMEOUT=10000
+OTTER_MAX_RETRIES=3
+OTTER_TIMEOUT=10000
 
 # Rate Limiting
-SYMBAIEX_RATE_LIMIT_MAX=20
-SYMBAIEX_RATE_LIMIT_WINDOW=900000
+OTTER_RATE_LIMIT_MAX=20
+OTTER_RATE_LIMIT_WINDOW=900000
 ```
 
 2. Plugin Integration:
 
 ```typescript
-import { Eliza } from '@eliza/core';
-import { SYMBaiEXPlugin } from 'eliza-plugin-symbaiex';
+import { Eliza } from "@eliza/core";
+import { OtterPlugin } from "eliza-plugin-otter";
 
 const eliza = new Eliza();
-const symbaiex = new SYMBaiEXPlugin();
+const otter = new OtterPlugin();
 
 // Initialize plugin
-await symbaiex.init();
+await otter.init();
 
 // Add to Eliza
-eliza.use(symbaiex);
+eliza.use(otter);
 ```
 
 ## Usage
 
-Interact with SYMBaiEX agents using @ mentions:
+Interact with otter agents using @ mentions:
 
 ```typescript
-// These messages will be routed to SYMBaiEX agents
+// These messages will be routed to otter agents
 @nyx What patterns do you see?
 @umbra Can you check the archives?
-@symbaiex How's the evolution progressing?
+@otter How's the evolution progressing?
 ```
 
 ## API Endpoints
 
 ### WebSocket
+
 - WS `/ws`
   - Real-time updates and events
   - Requires authentication via message
@@ -80,7 +84,9 @@ Interact with SYMBaiEX agents using @ mentions:
   ```
 
 ### Chat
+
 - POST `/api/chat`
+
   - Send message to an agent
   - Requires: agentId, message
   - Optional: userId, signature
@@ -90,20 +96,25 @@ Interact with SYMBaiEX agents using @ mentions:
   - Requires: conversationId
 
 ### Agents
+
 - GET `/api/agents`
+
   - List all available agents
 
 - GET `/api/agents/{id}`
   - Get detailed agent profile
 
 ### System
+
 - GET `/api/system/status`
+
   - Get current system status
 
 - GET `/api/system/metrics`
   - Get system metrics
 
 ## Rate Limiting
+
 - 20 requests per 15 minutes per client
 - Rate limit info included in response headers
 - WebSocket connections count as 1 request
@@ -124,14 +135,14 @@ Interact with SYMBaiEX agents using @ mentions:
 
 ```typescript
 try {
-  await symbaiex.chat('@nyx Hello!');
+	await otter.chat("@nyx Hello!");
 } catch (error) {
-  if (error.code === 'RATE_LIMIT_EXCEEDED') {
-    // Wait and retry
-  } else if (error.code === 'AGENT_UNAVAILABLE') {
-    // Try alternative agent
-  } else {
-    // Handle other errors
-  }
+	if (error.code === "RATE_LIMIT_EXCEEDED") {
+		// Wait and retry
+	} else if (error.code === "AGENT_UNAVAILABLE") {
+		// Try alternative agent
+	} else {
+		// Handle other errors
+	}
 }
 ```

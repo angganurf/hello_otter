@@ -12,7 +12,7 @@ interface ElizaForgeConfig {
 export const useElizaForge = (config: ElizaForgeConfig) => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState<string[]>([
-    'Welcome to ElizaForge - Character Creation Tool',
+    'Welcome to image2video Creation Tool',
     '----------------------------------------',
     `Rate Limit: ${forgeLimiter.getRemainingRequests()}/${config.rateLimit.maxRequests} attempts remaining`,
     'Resets every 20 minutes',
